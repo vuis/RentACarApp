@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Transfer card" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2e6ece84-89e8-4098-9e8e-ab9d52af1be9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="49"/>
+	<parameter name="id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[Select *,
+(Select office.name from rent.office where id=transferCard.officeOutId) as officeOut,
+(Select office.name from rent.office where id=transferCard.officeInId) as officeIn,
+(Select car.name from rent.car where id=transfercard.carId) as carname
+ from rent.transferCard
+left join rent.car on car.id=transferCard.carId
+left join rent.employee on employee.id=transferCard.employeeid
+where transferCard.id=$P{id}]]>
+	</queryString>
+	<field name="ID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="STATUS" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CARID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="EMPLOYEEID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DATEOUT" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TIMEOUT" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DATEIN" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="OFFICEOUTID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="OFFICEINID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NOTE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TOTALKM" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="INVOICENR" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="INVOICEAMOUNT" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="OFFICEID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NAME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="REGISTRATIONNR" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="REGISTRATIONEXP" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="KM" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FUEL" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="OWNER" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PICTURE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="USERNAME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PASSWORD" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FIRSTNAME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LASTNAME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DRIVERSLICENSENR" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DOB" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="AGENTNR" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="OFFICEOUT" class="java.lang.String"/>
+	<field name="OFFICEIN" class="java.lang.String"/>
+	<field name="CARNAME" class="java.lang.String"/>
+	<variable name="brojRacuna" class="java.lang.String">
+		<variableExpression><![CDATA[$F{INVOICENR}.equals( null )?"":$F{INVOICENR}]]></variableExpression>
+	</variable>
+	<variable name="iznos" class="java.lang.String">
+		<variableExpression><![CDATA[$F{INVOICEAMOUNT}.equals( new BigDecimal("0.00"))?"":$F{INVOICEAMOUNT}]]></variableExpression>
+	</variable>
+	<title>
+		<band height="20" splitType="Stretch"/>
+	</title>
+	<detail>
+		<band height="782">
+			<textField>
+				<reportElement x="272" y="80" width="283" height="20" uuid="a4987dcc-9900-4fde-9dc6-d6ee8652e0e6"/>
+				<box leftPadding="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd.MM.yyyy.").format($F{DATEIN})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="240" width="135" height="20" uuid="63edcd52-0071-4e15-bed5-fc52d4155827"/>
+				<box leftPadding="15"/>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#ffffff'>Ulazni km: </style>"+$F{KM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="135" y="240" width="137" height="20" uuid="7ab01d2c-d154-4d98-80fa-fe5d9fc2458b"/>
+				<box leftPadding="15"/>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#ffffff'>Ulazno gorivo: </style>"+$F{FUEL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="272" y="240" width="283" height="20" uuid="197f57d8-72f7-43bb-824d-a9a1d3401f01"/>
+				<box leftPadding="15"/>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#ffffff'>Napravljeno km: </style>"+$F{TOTALKM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="260" width="272" height="20" uuid="9bed3d17-0458-41ba-9b72-d0bf71df97e7"/>
+				<box leftPadding="15"/>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#ffffff'>Broj računa: </style>"+$V{brojRacuna}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="272" y="260" width="283" height="20" uuid="ab40e458-5eea-4ea0-9ef0-ef5890e4ce38"/>
+				<box leftPadding="15"/>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#ffffff'>Iznos računa: </style>"+$V{iznos}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

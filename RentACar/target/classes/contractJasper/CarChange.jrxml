@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Contract" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2e6ece84-89e8-4098-9e8e-ab9d52af1be9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="899"/>
+	<parameter name="id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[Select *,
+(Select office.name from rent.office where id=contract.dropOffOfficeId) as dropOffOffice,
+(Select office.phonenr from rent.office where id=contract.dropOffOfficeId) as dropOffOfficePhone,
+(Select office.address from rent.office where id=contract.dropOffOfficeId) as dropOffOfficeAddress,
+(Select customer.firstname from rent.customer where id=contract.customer2id) as customer2firstname,
+(Select customer.lastname from rent.customer where id=contract.customer2id) as customer2lastname,
+(Select customer.driversLicenseNr from rent.customer where id=contract.customer2id) as customer2driverslicensenr,
+(Select customer.address from rent.customer where id=contract.customerid) as customeraddress,
+(Select car.name from rent.car where id=contract.carId) as carName,
+(Select car.name from rent.car where id=contract.car2Id) as car2Name,
+(Select car.registrationNr from rent.car where id=contract.car2Id) as car2RegistrationNr,
+(Select car.km from rent.car where id=contract.car2Id) as car2km,
+(Select car.fuel from rent.car where id=contract.car2Id) as car2fuel,
+(Select car.picture from rent.car where id=contract.car2Id) as car2picture from rent.contract
+left join rent.office office on office.id=contract.pickupOfficeId
+left join rent.car on car.id=contract.carId
+left join rent.customer on customer.id=contract.customerid
+left join rent.accessories on accessories.id=contract.accessoriesId
+left join rent.insurance on insurance.id=contract.insuranceId
+left join rent.priceAdditions on priceAdditions.id=contract.priceAdditionsId  where contract.id=$P{id}]]>
+	</queryString>
+	<field name="ID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="STATUS" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="RESERVATIONNR" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CUSTOMERID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CUSTOMER2ID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CARID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CAR2ID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PICKUPOFFICEID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DROPOFFOFFICEID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PICKUPDATE" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PICKUPTIME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DROPOFFDATE" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DROPOFFTIME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="INSURANCEID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ACCESSORIESID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="OUTAGENTNR" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="INAGENTNR" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="AUTHORIZATIONAMOUNT" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="AUTHORIZATIONNR" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="BASERATE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PRICEADDITIONSID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PRICE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NOTE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TOTALKM" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DAMAGE" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DAMAGEPRICE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CARCHANGE" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NAME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ADDRESS" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PHONENR" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="EMAIL" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="OFFICEID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="REGISTRATIONNR" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="REGISTRATIONEXP" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="KM" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FUEL" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="OWNER" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PICTURE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FIRSTNAME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LASTNAME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DOB" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CITY" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="POSTALCODE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="COUNTRY" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DRIVERSLICENSENR" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PASSPORTNR" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CARDNR" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CARDEXP" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CARDCVV" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ADDITIONALDRIVER" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ADDITIONALDRIVERPRICE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="GPS" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="GPSPRICE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="WIFI" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="WIFIPRICE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="BABYSEAT" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="BABYSEATPRICE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ONEWAYFEE" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ONEWAYFEEPRICE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CDW" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CDWPRICE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TP" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TPPRICE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PAI" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PAIPRICE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="APTFEE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ROADFEE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="VEHICLELICENSEFEE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DROPOFFOFFICE" class="java.lang.String"/>
+	<field name="DROPOFFOFFICEPHONE" class="java.lang.String"/>
+	<field name="DROPOFFOFFICEADDRESS" class="java.lang.String"/>
+	<field name="CUSTOMER2FIRSTNAME" class="java.lang.String"/>
+	<field name="CUSTOMER2LASTNAME" class="java.lang.String"/>
+	<field name="CUSTOMER2DRIVERSLICENSENR" class="java.lang.String"/>
+	<field name="CUSTOMERADDRESS" class="java.lang.String"/>
+	<field name="CARNAME" class="java.lang.String"/>
+	<field name="CAR2NAME" class="java.lang.String"/>
+	<field name="CAR2REGISTRATIONNR" class="java.lang.String"/>
+	<field name="CAR2KM" class="java.lang.Integer"/>
+	<field name="CAR2FUEL" class="java.lang.Integer"/>
+	<field name="CAR2PICTURE" class="java.lang.String"/>
+	<variable name="Damage" class="java.lang.String">
+		<variableExpression><![CDATA[$F{DAMAGE}.toString().equals("false")?"No":"Yes Damage price: "+$F{DAMAGEPRICE}]]></variableExpression>
+	</variable>
+	<variable name="postalcode" class="java.lang.String">
+		<variableExpression><![CDATA[$F{POSTALCODE}.equals("")?", ":" "+$F{POSTALCODE}+", "]]></variableExpression>
+	</variable>
+	<variable name="customer2Firstname" class="java.lang.String">
+		<variableExpression><![CDATA[$F{CUSTOMER2FIRSTNAME}.equals( null )?"":$F{CUSTOMER2FIRSTNAME}]]></variableExpression>
+	</variable>
+	<variable name="customer2Lastname" class="java.lang.String">
+		<variableExpression><![CDATA[$F{CUSTOMER2LASTNAME}.equals( null )?"":$F{CUSTOMER2LASTNAME}]]></variableExpression>
+	</variable>
+	<variable name="customer2driversLicenseNr" class="java.lang.String">
+		<variableExpression><![CDATA[$F{CUSTOMER2DRIVERSLICENSENR}.equals( null )?"":$F{CUSTOMER2DRIVERSLICENSENR}]]></variableExpression>
+	</variable>
+	<variable name="cdw" class="java.lang.String">
+		<variableExpression><![CDATA[$F{CDW}.equals( "Uključeno u cijenu")?"Yes, CDW price: Included in base rate":(
+    ($F{CDW}.equals( "Stranka je prihvatila")?"Yes, CDW price: "+  $F{CDWPRICE}+" HRK":"No")
+    )]]></variableExpression>
+	</variable>
+	<variable name="tp" class="java.lang.String">
+		<variableExpression><![CDATA[$F{TP}.equals( "Uključeno u cijenu")?"Yes, TP price: Included in base rate":(
+    ($F{TP}.equals( "Stranka je prihvatila")?"Yes, TP price: "+  $F{TPPRICE}+" HRK":"No")
+    )]]></variableExpression>
+	</variable>
+	<variable name="pai" class="java.lang.String">
+		<variableExpression><![CDATA[$F{PAI}.equals( "Uključeno u cijenu")?"Yes, PAI price: Included in base rate":(
+    ($F{PAI}.equals( "Stranka je prihvatila")?"Yes, PAI price: "+  $F{PAIPRICE}+" HRK":"No")
+    )]]></variableExpression>
+	</variable>
+	<variable name="gps" class="java.lang.String">
+		<variableExpression><![CDATA[$F{GPS}.toString().equals("true")?"GPS: Yes, GPS price : "+$F{GPSPRICE}+" HRK":"GPS: No"]]></variableExpression>
+	</variable>
+	<variable name="wifi" class="java.lang.String">
+		<variableExpression><![CDATA[$F{WIFI}.toString().equals("true")?"WIFI: Yes, WIFI price : "+$F{WIFIPRICE}+" HRK":"WIFI: No"]]></variableExpression>
+	</variable>
+	<variable name="babyseat" class="java.lang.String">
+		<variableExpression><![CDATA[$F{BABYSEAT}.toString().equals("true")?"Baby seat: Yes, Baby seat price : "+$F{BABYSEATPRICE}+" HRK":"Baby seat: No"]]></variableExpression>
+	</variable>
+	<variable name="additionaldriver" class="java.lang.String">
+		<variableExpression><![CDATA[$F{ADDITIONALDRIVER}.toString().equals("true")?"Additional driver: Yes, Additional driver price : "+$F{ADDITIONALDRIVERPRICE}+" HRK":"Additional driver: No"]]></variableExpression>
+	</variable>
+	<variable name="onewayfee" class="java.lang.String">
+		<variableExpression><![CDATA[$F{ONEWAYFEE}.toString().equals("true")?"One way fee: Yes, One way fee price : "+$F{ONEWAYFEEPRICE}+" HRK":"One way fee: No"]]></variableExpression>
+	</variable>
+	<title>
+		<band height="20" splitType="Stretch"/>
+	</title>
+	<detail>
+		<band height="782">
+			<textField>
+				<reportElement x="272" y="320" width="141" height="20" uuid="3b6f4a66-730f-4ca9-834d-bd101e94507b"/>
+				<box leftPadding="15">
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#ffffff'>Km in: </style>"+$F{KM}+" km"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="272" y="340" width="141" height="20" uuid="cef3d1a0-4f18-45ee-bcaf-f050abd2e6aa"/>
+				<box leftPadding="15">
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#ffffff'>Fuel in: </style>"+$F{FUEL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="272" y="360" width="141" height="20" uuid="17fde82d-8fa6-4cdc-b104-0d469ee1f9dc"/>
+				<box leftPadding="15">
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="styled"/>
+				<textFieldExpression><![CDATA["<style forecolor='#ffffff'>Total km: </style>"+$F{TOTALKM}+" km"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="272" y="380" width="141" height="20" uuid="47d92cc9-a31d-4c8c-ae26-b112ef633e2f"/>
+				<box leftPadding="15">
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#ffffff'>Damage: </style>"+$V{Damage}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="272" y="400" width="141" height="20" uuid="0d6f3026-2053-479a-b1fd-fb703670d813"/>
+				<box leftPadding="15">
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#ffffff'>Damage price: </style>"+$F{DAMAGEPRICE}+" HRK"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="240" width="141" height="20" uuid="b82806f1-a807-482c-aee2-1966e53032f0"/>
+				<box leftPadding="13">
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#ffffff'>Vehicle: </style>"+$F{CAR2NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="280" width="141" height="20" uuid="6f0de6dc-8d4d-4d46-9f48-22c67ddec063"/>
+				<box leftPadding="13">
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#ffffff'>Km out: </style>"+$F{CAR2KM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="260" width="141" height="20" uuid="ee2ce6bf-e3c3-4c38-be3d-fabf01bc7d36"/>
+				<box leftPadding="13">
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#ffffff'>Registration: </style>"+$F{CAR2REGISTRATIONNR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="300" width="141" height="20" uuid="9d3d5958-ec09-4219-a299-3809be1e798e"/>
+				<box leftPadding="13">
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#ffffff'>Fuel out: </style>"+$F{CAR2FUEL}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="802">
+			<image>
+				<reportElement positionType="Float" x="22" y="95" width="512" height="512" uuid="64c07273-afdd-4e8b-8235-69d2daeae1c2"/>
+				<imageExpression><![CDATA[$F{CAR2PICTURE}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="19" width="554" height="20" uuid="8d0e8e78-e825-486b-b06e-0a2b54f56a2a"/>
+				<box leftPadding="0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Damage list:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="781" width="100" height="20" uuid="f1b8a210-cc90-4294-962b-3e66790ba67c"/>
+				<box leftPadding="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Renter signature:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="400" y="794" width="155" height="1" uuid="9f3317f4-f351-41b8-a36a-6c2b52a249dd"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="781" width="100" height="20" uuid="3e56705d-0fd4-4048-ae18-7ea105eaf094"/>
+				<box leftPadding="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Agent signature:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="100" y="794" width="155" height="1" uuid="e930249b-c87a-4505-a317-0edb59c9547b"/>
+			</line>
+			<break>
+				<reportElement x="0" y="0" width="100" height="1" uuid="4ce4686b-9010-4ac3-a4d4-6224eb441c71"/>
+			</break>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+    http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+	<global-method-security secured-annotations="enabled" />
+	<http auto-config="true" use-expressions="true">
+		<access-denied-handler error-page="/login.jsp?error=forbidden" />
+
+		<intercept-url pattern="/login.jsp" access="hasRole('ROLE_ANONYMOUS')" />
+		<intercept-url pattern="/createReservation.html"
+			access="hasAnyRole('Administrator','Zaposlenik','Rezervacije')" />
+		<intercept-url pattern="/openedReservationList.html"
+			access="hasAnyRole('Administrator','Zaposlenik','Rezervacije')" />
+		<intercept-url pattern="/closedReservationList.html"
+			access="hasAnyRole('Administrator','Zaposlenik','Rezervacije')" />
+		<intercept-url pattern="/editReservation.html"
+			access="hasAnyRole('Administrator','Zaposlenik','Rezervacije')" />
+		<intercept-url pattern="/employeeList.html" access="hasRole('Administrator')" />
+		<intercept-url pattern="/editEmployee.html" access="hasRole('Administrator')" />
+		<intercept-url pattern="/carList.html"
+			access="hasAnyRole('Administrator','Zaposlenik')" />
+		<intercept-url pattern="/carListForOffice.html"
+			access="hasAnyRole('Administrator','Zaposlenik')" />
+		<intercept-url pattern="/editCar.html" access="hasRole('Administrator')" />
+		<intercept-url pattern="/createCar.html" access="hasRole('Administrator')" />
+		<intercept-url pattern="/createTransferCard.html"
+			access="hasAnyRole('Administrator','Zaposlenik')" />
+		<intercept-url pattern="/openedTransferCardList.html"
+			access="hasAnyRole('Administrator','Zaposlenik')" />
+		<intercept-url pattern="/closedTransferCardList.html"
+			access="hasAnyRole('Administrator','Zaposlenik')" />
+		<intercept-url pattern="/editTransferCard.html"
+			access="hasAnyRole('Administrator','Zaposlenik')" />
+		<intercept-url pattern="/carHistoryList.html"
+			access="hasAnyRole('Administrator','Zaposlenik')" />
+		<intercept-url pattern="/editTransferCard.html"
+			access="hasAnyRole('Administrator','Zaposlenik')" />
+		<intercept-url pattern="/employeeTable.html"
+			access="hasAnyRole('Administrator','Zaposlenik')" />
+		<intercept-url pattern="/officeOut.html"
+			access="hasAnyRole('Administrator','Zaposlenik')" />
+		<intercept-url pattern="/createContract.html"
+			access="hasAnyRole('Administrator','Zaposlenik')" />
+		<intercept-url pattern="/editContract.html"
+			access="hasAnyRole('Administrator','Zaposlenik')" />
+		<intercept-url pattern="/openedContractList.html"
+			access="hasAnyRole('Administrator','Zaposlenik')" />
+		<intercept-url pattern="/closedContractList.html"
+			access="hasAnyRole('Administrator','Zaposlenik')" />
+		<intercept-url pattern="/createContractFromReservation.html"
+			access="hasAnyRole('Administrator','Zaposlenik')" />
+		<intercept-url pattern="/customerList.html"
+			access="hasAnyRole('Administrator','Zaposlenik','Rezervacije')" />
+		<intercept-url pattern="/createReservationForCustomer.html"
+			access="hasAnyRole('Administrator','Zaposlenik','Rezervacije')" />
+		<intercept-url pattern="/createContractForCustomer.html"
+			access="hasAnyRole('Administrator','Zaposlenik')" />
+		<intercept-url pattern="/picture.html"
+			access="hasAnyRole('Administrator','Zaposlenik')" />
+		<intercept-url pattern="/upload.html"
+			access="hasAnyRole('Administrator','Zaposlenik')" />
+		<intercept-url pattern="/savefiles.html"
+			access="hasAnyRole('Administrator','Zaposlenik')" />
+		<intercept-url pattern="/createPdfForReservation.html"
+			access="hasAnyRole('Administrator','Zaposlenik','Rezervacije')" />
+		<intercept-url pattern="/index.html"
+			access="hasAnyRole('Administrator','Zaposlenik','Rezervacije')" />
+		<form-login login-page="/login.jsp"
+			authentication-failure-url="/login.jsp?error=true"
+			default-target-url="/index.html" />
+		<logout logout-success-url="/login.jsp?logoff=t" />
+	</http>
+	<authentication-manager>
+		<authentication-provider>
+			<password-encoder hash="md5" />
+			<jdbc-user-service data-source-ref="ds"
+				authorities-by-username-query="select USERNAME, ROLENAME from RENT.EMPLOYEE_RIGHT where USERNAME=?"
+				users-by-username-query="select USERNAME, PASSWORD, 'true' from RENT.EMPLOYEE where USERNAME=?" />
+		</authentication-provider>
+	</authentication-manager>
+</beans:beans>

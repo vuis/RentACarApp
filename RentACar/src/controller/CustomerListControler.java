@@ -1,0 +1,25 @@
+package controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import domain.Customer;
+import service.ServiceInterface;
+
+@Controller
+public class CustomerListControler {
+	@Autowired
+	private ServiceInterface service;
+
+	@RequestMapping(value = "/customerList.html", method = RequestMethod.GET)
+	public String showCustomerList(Model model) {
+		List<Customer> customerList = service.fetchAllCustomers();
+		model.addAttribute("customerList", customerList);
+		return "customerList";
+	}
+}

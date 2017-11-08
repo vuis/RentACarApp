@@ -1,0 +1,230 @@
+h1 {
+	color: white;
+	font-size: 24px;
+	font-family: "Arial";
+}
+
+body {
+	font-family: "Arial";	
+	height: 100%;
+	font-size: 14px;
+	margin:0;
+}
+
+#feedback-page {
+	text-align: center;
+}
+
+#form-main {
+	width: 100%;
+	float: left;
+	padding-top: 0px;
+}
+
+#form-div {
+	background-color: #444;
+	padding-left: 35px;
+	padding-right: 35px;
+	padding-top: 35px;
+	padding-bottom: 50px;
+	width: 450px;
+	float: left;
+	left: 50%;
+	position: absolute;
+	margin-top: 30px;
+	margin-left: -260px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+}
+
+.feedback-input {
+	color: #3c3c3c;
+	font-weight: 500;
+	font-size: 18px;
+	border-radius: 0;
+	line-height: 22px;
+	background-color: #fbfbfb;
+	padding: 13px 13px 13px 10px;
+	margin-bottom: 10px;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	border: 3px solid rgba(0, 0, 0, 0);
+	font-family: "Arial";
+}
+
+.feedback-input:focus {
+	background: #fff;
+	box-shadow: 0;
+	border: 3px solid #005f5f;
+	color: #005f5f;
+	outline: none;
+	padding: 13px 13px 13px 10px;
+}
+
+.focused {
+	color: #30aed6;
+	border: #30aed6 solid 3px;
+}
+
+input:hover, textarea:hover, input:focus, textarea:focus {
+	background-color: white;
+}
+
+#button-blue {
+	float: left;
+	width: 100%;
+	border: #fbfbfb solid 4px;
+	cursor: pointer;
+	background-color: #005f5f;
+	color: white;
+	font-size: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+	margin-top: -4px;
+	font-weight: 700;
+	font-family: "Arial";
+}
+
+#button-blue:hover {
+	background-color: rgba(0, 0, 0, 0);
+	color: #005f5f;
+}
+
+.submit:hover {
+	color: #005f5f;
+}
+
+.ease {
+	width: 0px;
+	height: 42px;
+	background-color: #fbfbfb;
+	-webkit-transition: .3s ease;
+	-moz-transition: .3s ease;
+	-o-transition: .3s ease;
+	-ms-transition: .3s ease;
+	transition: .3s ease;
+}
+
+.submit:hover .ease {
+	width: 100%;
+	background-color: white;
+}
+
+@media only screen and (max-width: 580px) {
+	#form-div {
+		left: 3%;
+		margin-right: 3%;
+		width: 88%;
+		margin-left: 0;
+		padding-left: 3%;
+		padding-right: 3%;
+	}
+}
+
+.nav {
+	margin-bottom: 20px;
+}
+
+.nav ul {
+	text-align: center;
+	list-style: none;
+	background-color: #444;
+	padding: 0;
+	margin: 0;
+	z-index: 1;
+}
+
+.nav li {
+	line-height: 40px;
+}
+
+.nav a {
+	text-decoration: none;
+	color: #fff;
+	display: block;
+	border-bottom: 1px solid #888;
+	transition: .3s background-color;
+}
+
+.nav a:hover {
+	background-color: #005f5f;
+}
+
+.nav a.active {
+	background-color: #aaa;
+	color: #444;
+	cursor: default;
+}
+
+/* Sub Menus */
+.nav li li {
+	font-size: .9em;
+}
+
+/*******************************************
+   Style menu for larger screens
+
+   Using 650px (130px each * 5 items), but ems
+   or other values could be used depending on other factors
+********************************************/
+@media screen and (min-width: 650px) {
+	.nav li {
+		width: 185px;
+		border-bottom: none;
+		line-height: 50px;
+		font-size: 1.1em;
+		display: inline-block;
+	}
+	.nav a {
+		border-bottom: none;
+	}
+
+	/* Sub Menus */
+	.nav li ul {
+		position: absolute;
+		display: none;
+	}
+	.nav li:hover ul {
+		display: block;
+	}
+	.nav li ul li {
+		display: block;
+	}
+}
+
+#table {
+	border: 1px solid black;
+	padding: 10px;
+	margin: 0 auto;
+	width: 97%;
+	border-radius:7px;
+	background: #EFEFEF;
+}
+
+#employeeInfo tr td {
+	width: 192px;
+}
+
+#table td {
+	color: black;
+	font-weight: bold;
+}
+
+input {
+	padding-left: 10px;
+}
+
+.img {
+	width: 200px;
+	height: 150px;
+}
+
+.img:hover {
+	border: 1px solid #777;
+}

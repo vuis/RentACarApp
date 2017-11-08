@@ -1,0 +1,1178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Contract" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2e6ece84-89e8-4098-9e8e-ab9d52af1be9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="288"/>
+	<parameter name="id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[Select *,
+(Select office.name from rent.office where id=contract.dropOffOfficeId) as dropOffOffice,
+(Select office.phonenr from rent.office where id=contract.dropOffOfficeId) as dropOffOfficePhone,
+(Select office.address from rent.office where id=contract.dropOffOfficeId) as dropOffOfficeAddress,
+(Select customer.firstname from rent.customer where id=contract.customer2id) as customer2firstname,
+(Select customer.lastname from rent.customer where id=contract.customer2id) as customer2lastname,
+(Select customer.driversLicenseNr from rent.customer where id=contract.customer2id) as customer2driverslicensenr,
+(Select customer.address from rent.customer where id=contract.customerid) as customeraddress,
+(Select car.name from rent.car where id=contract.carId) as carName from rent.contract
+left join rent.office office on office.id=contract.pickupOfficeId
+left join rent.car on car.id=contract.carId
+left join rent.customer on customer.id=contract.customerid
+left join rent.accessories on accessories.id=contract.accessoriesId
+left join rent.insurance on insurance.id=contract.insuranceId
+left join rent.priceAdditions on priceAdditions.id=contract.priceAdditionsId  where contract.id=$P{id}]]>
+	</queryString>
+	<field name="ID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="STATUS" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="RESERVATIONNR" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CUSTOMERID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CUSTOMER2ID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CARID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CAR2ID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PICKUPOFFICEID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DROPOFFOFFICEID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PICKUPDATE" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PICKUPTIME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DROPOFFDATE" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DROPOFFTIME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="INSURANCEID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ACCESSORIESID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="OUTAGENTNR" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="INAGENTNR" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="AUTHORIZATIONAMOUNT" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="AUTHORIZATIONNR" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="BASERATE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PRICEADDITIONSID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PRICE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NOTE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TOTALKM" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DAMAGE" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DAMAGEPRICE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CARCHANGE" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NAME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ADDRESS" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PHONENR" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="EMAIL" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="OFFICEID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="REGISTRATIONNR" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="REGISTRATIONEXP" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="KM" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FUEL" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="OWNER" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PICTURE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FIRSTNAME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LASTNAME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DOB" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CITY" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="POSTALCODE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="COUNTRY" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DRIVERSLICENSENR" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PASSPORTNR" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CARDNR" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CARDEXP" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CARDCVV" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ADDITIONALDRIVER" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ADDITIONALDRIVERPRICE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="GPS" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="GPSPRICE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="WIFI" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="WIFIPRICE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="BABYSEAT" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="BABYSEATPRICE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ONEWAYFEE" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ONEWAYFEEPRICE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CDW" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CDWPRICE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TP" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TPPRICE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PAI" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PAIPRICE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="APTFEE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ROADFEE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="VEHICLELICENSEFEE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DROPOFFOFFICE" class="java.lang.String"/>
+	<field name="DROPOFFOFFICEPHONE" class="java.lang.String"/>
+	<field name="DROPOFFOFFICEADDRESS" class="java.lang.String"/>
+	<field name="CUSTOMER2FIRSTNAME" class="java.lang.String"/>
+	<field name="CUSTOMER2LASTNAME" class="java.lang.String"/>
+	<field name="CUSTOMER2DRIVERSLICENSENR" class="java.lang.String"/>
+	<field name="CUSTOMERADDRESS" class="java.lang.String"/>
+	<field name="CARNAME" class="java.lang.String"/>
+	<variable name="Damage" class="java.lang.String">
+		<variableExpression><![CDATA[$F{DAMAGE}.toString().equals("false")?"No":"Yes Damage price: "+$F{DAMAGEPRICE}]]></variableExpression>
+	</variable>
+	<variable name="postalcode" class="java.lang.String">
+		<variableExpression><![CDATA[$F{POSTALCODE}.equals("")?", ":" "+$F{POSTALCODE}+", "]]></variableExpression>
+	</variable>
+	<variable name="customer2Firstname" class="java.lang.String">
+		<variableExpression><![CDATA[$F{CUSTOMER2FIRSTNAME}.equals( null )?"":$F{CUSTOMER2FIRSTNAME}]]></variableExpression>
+	</variable>
+	<variable name="customer2Lastname" class="java.lang.String">
+		<variableExpression><![CDATA[$F{CUSTOMER2LASTNAME}.equals( null )?"":$F{CUSTOMER2LASTNAME}]]></variableExpression>
+	</variable>
+	<variable name="customer2driversLicenseNr" class="java.lang.String">
+		<variableExpression><![CDATA[$F{CUSTOMER2DRIVERSLICENSENR}.equals( null )?"":$F{CUSTOMER2DRIVERSLICENSENR}]]></variableExpression>
+	</variable>
+	<variable name="cdw" class="java.lang.String">
+		<variableExpression><![CDATA[$F{CDW}.equals( "Uključeno u cijenu")?"Yes, CDW price: Included in base rate":(
+    ($F{CDW}.equals( "Stranka je prihvatila")?"Yes, CDW price: "+  $F{CDWPRICE}+" HRK":"No")
+    )]]></variableExpression>
+	</variable>
+	<variable name="tp" class="java.lang.String">
+		<variableExpression><![CDATA[$F{TP}.equals( "Uključeno u cijenu")?"Yes, TP price: Included in base rate":(
+    ($F{TP}.equals( "Stranka je prihvatila")?"Yes, TP price: "+  $F{TPPRICE}+" HRK":"No")
+    )]]></variableExpression>
+	</variable>
+	<variable name="pai" class="java.lang.String">
+		<variableExpression><![CDATA[$F{PAI}.equals( "Uključeno u cijenu")?"Yes, PAI price: Included in base rate":(
+    ($F{PAI}.equals( "Stranka je prihvatila")?"Yes, PAI price: "+  $F{PAIPRICE}+" HRK":"No")
+    )]]></variableExpression>
+	</variable>
+	<variable name="gps" class="java.lang.String">
+		<variableExpression><![CDATA[$F{GPS}.toString().equals("true")?"GPS: Yes, GPS price : "+$F{GPSPRICE}+" HRK":"GPS: No"]]></variableExpression>
+	</variable>
+	<variable name="wifi" class="java.lang.String">
+		<variableExpression><![CDATA[$F{WIFI}.toString().equals("true")?"WIFI: Yes, WIFI price : "+$F{WIFIPRICE}+" HRK":"WIFI: No"]]></variableExpression>
+	</variable>
+	<variable name="babyseat" class="java.lang.String">
+		<variableExpression><![CDATA[$F{BABYSEAT}.toString().equals("true")?"Baby seat: Yes, Baby seat price : "+$F{BABYSEATPRICE}+" HRK":"Baby seat: No"]]></variableExpression>
+	</variable>
+	<variable name="additionaldriver" class="java.lang.String">
+		<variableExpression><![CDATA[$F{ADDITIONALDRIVER}.toString().equals("true")?"Additional driver: Yes, Additional driver price : "+$F{ADDITIONALDRIVERPRICE}+" HRK":"Additional driver: No"]]></variableExpression>
+	</variable>
+	<variable name="onewayfee" class="java.lang.String">
+		<variableExpression><![CDATA[$F{ONEWAYFEE}.toString().equals("true")?"One way fee: Yes, One way fee price : "+$F{ONEWAYFEEPRICE}+" HRK":"One way fee: No"]]></variableExpression>
+	</variable>
+	<title>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="555" height="20" uuid="5b7b7047-9752-4f3e-aea5-940c64b20b62"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="16" isBold="true" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Contract number: "+$F{ID}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="782">
+			<textField>
+				<reportElement x="0" y="40" width="272" height="20" uuid="45343610-bcb9-450b-a909-67883be88dd0"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="10" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Office: " +$F{NAME}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="20" width="272" height="20" uuid="c45b64a5-3793-48af-962e-cc0f23ca4434"/>
+				<box leftPadding="15">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Pickup office:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="60" width="272" height="20" uuid="6b5e391c-7df3-4fab-a498-4b35e408aca7"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="10" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Address: "+$F{ADDRESS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="80" width="272" height="20" uuid="5f621fac-3bdf-4fcf-836a-8dd1c68369b4"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="10" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Phone number: "+$F{PHONENR}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="272" y="20" width="283" height="20" uuid="c983e465-9a14-477d-ac63-26664220aed2"/>
+				<box leftPadding="15">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Agreeded return office:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="272" y="40" width="283" height="20" uuid="ebf66a22-2458-42b4-ad3b-7be66063df31"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Office: "+$F{DROPOFFOFFICE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="272" y="220" width="141" height="20" uuid="c1bf018c-ff6b-4298-8fb9-c374f01e836f"/>
+				<box leftPadding="15">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Vehicle:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="272" y="240" width="141" height="20" uuid="724be85e-4469-4499-8d56-600b4a4c58e4"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Vehicle: "+$F{CARNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="272" y="280" width="141" height="20" uuid="8b3d6486-72f3-4eca-95aa-f2155319f6be"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Km out: "+$F{KM}+" km"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="272" y="260" width="141" height="20" uuid="615a840f-773f-47f6-b09a-8d2ade99fd27"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Registration: "+$F{REGISTRATIONNR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="272" y="300" width="141" height="20" uuid="cb2d3cc6-4a51-4c36-a17e-9cc6ee5777e4"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Fuel out: "+$F{FUEL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="180" width="272" height="20" uuid="432ab66f-dd5f-4851-b176-c0b19d4341a4"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Renter data:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="200" width="272" height="20" uuid="e16f35c1-45ee-47d6-ad3d-48082858c6d2"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Name: "+$F{FIRSTNAME} +" "+$F{LASTNAME}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd.MM.yyyy.">
+				<reportElement x="0" y="220" width="272" height="20" uuid="9e9d6bcc-7066-460d-b53c-72cd1371792b"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Date of birth: "+ new SimpleDateFormat("dd.MM.yyyy.").format($F{DOB})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="240" width="272" height="20" uuid="9fd6a8cc-42eb-486c-93fb-11328ead1faa"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Address:  "+$F{CUSTOMERADDRESS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="280" width="272" height="20" uuid="b85222ad-802b-4c69-9631-5294ecea41b3"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Drivers license number: "+$F{DRIVERSLICENSENR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="300" width="272" height="20" uuid="62993b67-0be0-4d2f-95e6-89b63eaa215f"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Passport number: "+$F{PASSPORTNR}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="100" width="272" height="20" uuid="d948cfc6-e066-4e21-bb7c-154b9c08c60f"/>
+				<box leftPadding="15">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Pickup date and time:]]></text>
+			</staticText>
+			<textField pattern="dd.MM.yyyy.">
+				<reportElement x="0" y="120" width="272" height="20" uuid="fceea61a-1bc4-4ccf-aa9b-f7e7dad56bd6"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd.MM.yyyy.").format($F{PICKUPDATE})+" "+$F{PICKUPTIME}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="272" y="100" width="283" height="20" uuid="e2c09e9b-98ae-4b6a-bc3e-052f58ccc1f9"/>
+				<box leftPadding="15">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Agreeded return date and time:]]></text>
+			</staticText>
+			<textField pattern="dd.MM.yyyy.">
+				<reportElement x="272" y="120" width="283" height="20" uuid="47247610-5d31-40fb-b250-d256a9d93ff3"/>
+				<box leftPadding="15">
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd.MM.yyyy.").format($F{DROPOFFDATE})+" "+$F{DROPOFFTIME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="272" y="60" width="283" height="20" uuid="c0d5c2ee-f897-4217-8601-afa0054b0583"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Address: "+$F{DROPOFFOFFICEADDRESS}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="272" y="320" width="141" height="20" uuid="3b6f4a66-730f-4ca9-834d-bd101e94507b"/>
+				<box leftPadding="15">
+					<topPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Km in: "]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="272" y="340" width="141" height="20" uuid="cef3d1a0-4f18-45ee-bcaf-f050abd2e6aa"/>
+				<box leftPadding="15">
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Fuel in: "]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="272" y="360" width="141" height="20" uuid="17fde82d-8fa6-4cdc-b104-0d469ee1f9dc"/>
+				<box leftPadding="15">
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Total km: "]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="272" y="380" width="141" height="20" uuid="47d92cc9-a31d-4c8c-ae26-b112ef633e2f"/>
+				<box leftPadding="15">
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Damage: "]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="140" width="272" height="20" uuid="6f3fcaf6-c4ad-4ee7-af36-b33571499059"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Reservation:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="160" width="272" height="20" uuid="5b43ae88-d97b-4de3-b65d-b685715d1aea"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RESERVATIONNR}.equals(null)?"Reservation number: ":"Reservation number: "+$F{RESERVATIONNR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="272" y="80" width="283" height="20" uuid="1be9d423-f609-4a0a-88ce-2c50ced42b2c"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="10" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Phone number: "+$F{DROPOFFOFFICEPHONE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="260" width="272" height="20" uuid="af2cecfc-2a48-4558-acee-269cafb7296e"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CITY}+$V{postalcode} +$F{COUNTRY}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="360" width="272" height="20" uuid="c56a10e6-2a95-4069-a8f9-c1243ecaeb38"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Drivers license number: "+$V{customer2driversLicenseNr}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="320" width="272" height="20" uuid="d511da4b-305a-4d1c-9dd0-2632fdd40760"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Aditional driver data:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="340" width="272" height="20" uuid="99af50ae-178f-40d5-be82-ea0ba37219a9"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Name: "+$V{customer2Firstname} +" "+$V{customer2Lastname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="272" y="440" width="283" height="20" uuid="bc151377-d3fb-4c72-bc42-d9ba4bee56aa"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Authorization amount: "+$F{AUTHORIZATIONAMOUNT}+" HRK"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="272" y="420" width="283" height="20" uuid="b6966d1c-7438-4f9d-b7bb-80e649b91f55"/>
+				<box leftPadding="15">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Authorization in case of damage:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="272" y="460" width="283" height="20" uuid="a00f51ab-be3e-4b75-9877-00ab4dab3c6e"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Authorization number: "+$F{AUTHORIZATIONNR}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="380" width="272" height="20" uuid="6bb42efb-92ad-4ad1-a545-12491c518609"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Insurance:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="420" width="272" height="20" uuid="1b90945e-6fee-45bf-9d5b-770eb5edc969"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TP: "+$V{tp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="400" width="272" height="20" uuid="7b290a64-05ad-4a48-a8aa-382e7b3b8a87"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CDW: "+$V{cdw}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="440" width="272" height="20" uuid="0494845b-6325-4d48-afa3-a1f36c2a4a67"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["PAI: "+$V{pai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="272" y="540" width="283" height="20" uuid="775c7ec4-cd6e-48eb-aa44-3663bb2ed27f"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Vehicle license fee: "+$F{VEHICLELICENSEFEE}+" HRK"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="272" y="480" width="283" height="20" uuid="92c85800-0064-42af-b65f-3c715d3955ae"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Price additions:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="272" y="520" width="283" height="20" uuid="e4afc60c-5f60-4bae-9e2f-a205101e8c84"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Road fee: " + $F{ROADFEE}+" HRK"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="272" y="500" width="283" height="20" uuid="e38cd8fd-df49-42a3-b2bf-3a7ce4cf956b"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Airport fee: "+$F{APTFEE}+" %"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="560" width="272" height="20" uuid="ab253498-5bfd-49ba-8210-81f7c6f1b410"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{onewayfee}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="460" width="272" height="20" uuid="79d5d368-7a09-4c8e-b69e-739ee037dd67"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Accessories:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="540" width="272" height="20" uuid="b3d779ae-2edf-486f-84b2-40b2fae3d822"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{additionaldriver}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="480" width="272" height="20" uuid="55519b5a-5fbf-4854-866e-bcdddddaade1"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{gps}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="520" width="272" height="20" uuid="0d7289cd-0b2c-423d-bba3-6f4ff345b494"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{babyseat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="500" width="272" height="20" uuid="5ced75bd-4f2c-4780-9f1a-db829cdbdea8"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{wifi}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="272" y="560" width="283" height="20" uuid="e01d457f-44ba-45aa-9661-4dfd8391965c"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Price:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="272" y="580" width="283" height="20" uuid="c16553d1-2e21-4cb4-8169-82aeed21cb23"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Base rate: " +$F{BASERATE}+" HRK"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="272" y="600" width="283" height="20" uuid="c946d41d-a847-4bea-ab92-69ad482690fa"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Total price: "+$F{PRICE}+" HRK"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="620" width="555" height="20" uuid="29d7ed7a-5d4b-4ee2-9bba-d4ad014e641c"/>
+				<box leftPadding="15">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Note:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="640" width="555" height="45" uuid="55ae08c7-54da-4523-9dad-d76ec51fe683"/>
+				<box leftPadding="15" rightPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOTE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="272" y="140" width="283" height="20" uuid="88b88580-c6a0-47f9-bffc-3f09e56602ba"/>
+				<box leftPadding="15">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Return office:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="272" y="160" width="283" height="20" uuid="7c50d9ea-3815-40d8-85a7-23e0e56c3bad"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="272" y="180" width="283" height="20" uuid="c6cb31a9-736e-4469-a7bb-e7648f658808"/>
+				<box leftPadding="15">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Return date and time:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="272" y="200" width="283" height="20" uuid="ba473a90-af62-4200-bcc9-2dbd9ecfbf6e"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="414" y="240" width="141" height="20" uuid="b82806f1-a807-482c-aee2-1966e53032f0"/>
+				<box leftPadding="13">
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Vehicle:"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="414" y="280" width="141" height="20" uuid="6f0de6dc-8d4d-4d46-9f48-22c67ddec063"/>
+				<box leftPadding="13">
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Km out:"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="414" y="340" width="141" height="20" uuid="d3634790-51ac-4420-9e01-75e0c167b3bd"/>
+				<box leftPadding="13">
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Fuel in:"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="414" y="220" width="141" height="20" uuid="fda2efe9-567b-4f47-8ac6-7e3975410c02"/>
+				<box leftPadding="13">
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Replacement vehicle:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="414" y="380" width="141" height="20" uuid="4dd06ebd-ff86-4f15-8e35-8b4a3022fd35"/>
+				<box leftPadding="13">
+					<topPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Damage:"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="414" y="360" width="141" height="20" uuid="4edbf50b-ac7e-46fd-aa53-97c1136ebe74"/>
+				<box leftPadding="13">
+					<topPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Total km:"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="414" y="320" width="141" height="20" uuid="66e775cf-baba-40bb-96eb-1414ce3254b3"/>
+				<box leftPadding="13">
+					<topPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Km in:"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="414" y="260" width="141" height="20" uuid="ee2ce6bf-e3c3-4c38-be3d-fabf01bc7d36"/>
+				<box leftPadding="13">
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Registration:"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="414" y="300" width="141" height="20" uuid="9d3d5958-ec09-4219-a299-3809be1e798e"/>
+				<box leftPadding="13">
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Fuel out:"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="580" width="272" height="20" uuid="07f8795f-3ee7-4b5b-a6e5-391620e08771"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Agent data:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="600" width="136" height="20" uuid="01098ace-ac75-4bb9-b475-34bb8a5201f8"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Agent out number: "+$F{OUTAGENTNR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="600" width="136" height="20" uuid="6e11ac39-f1a3-485b-b1c9-5f771d7523ff"/>
+				<box leftPadding="15">
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Agent in number:"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="414" y="400" width="141" height="20" uuid="ff188be2-f0a5-4760-a24b-fb53652cb1df"/>
+				<box leftPadding="13">
+					<topPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Damage price:"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="272" y="400" width="141" height="20" uuid="0d6f3026-2053-479a-b1fd-fb703670d813"/>
+				<box leftPadding="15">
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Damage price: "]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="300" y="762" width="100" height="20" uuid="df5f9f60-a6b3-4fc1-866c-23eb10179f66"/>
+				<box leftPadding="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Renter signature:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="399" y="776" width="155" height="1" uuid="affc2741-5836-447d-811c-4b412ac98b0c"/>
+			</line>
+		</band>
+		<band height="802">
+			<image>
+				<reportElement positionType="Float" x="22" y="95" width="512" height="512" uuid="64c07273-afdd-4e8b-8235-69d2daeae1c2"/>
+				<imageExpression><![CDATA[$F{PICTURE}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="19" width="554" height="20" uuid="8d0e8e78-e825-486b-b06e-0a2b54f56a2a"/>
+				<box leftPadding="0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Damage list:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="781" width="100" height="20" uuid="f1b8a210-cc90-4294-962b-3e66790ba67c"/>
+				<box leftPadding="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Renter signature:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="400" y="794" width="155" height="1" uuid="9f3317f4-f351-41b8-a36a-6c2b52a249dd"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="781" width="100" height="20" uuid="3e56705d-0fd4-4048-ae18-7ea105eaf094"/>
+				<box leftPadding="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Agent signature:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="100" y="794" width="155" height="1" uuid="e930249b-c87a-4505-a317-0edb59c9547b"/>
+			</line>
+			<break>
+				<reportElement x="0" y="0" width="100" height="1" uuid="4ce4686b-9010-4ac3-a4d4-6224eb441c71"/>
+			</break>
+		</band>
+	</detail>
+</jasperReport>
