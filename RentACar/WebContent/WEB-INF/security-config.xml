@@ -6,8 +6,7 @@
     http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
 	<global-method-security secured-annotations="enabled" />
-	<http pattern="/rest/**" create-session="stateless"
-		use-expressions="true">
+	<http pattern="/rest/**" use-expressions="true">
 		<intercept-url pattern="/rest/openedReservationList"
 			access="hasAnyRole('Administrator','Zaposlenik','Rezervacije')" />
 		<http-basic />
