@@ -24,7 +24,7 @@ public class ReservationListController {
 	private ServiceInterface service;
 
 	@RequestMapping(value = "/openedReservationList.html", method = RequestMethod.GET)
-	public String showOpenedReservation(Model model) {
+	public   String showOpenedReservation(Model model) {
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username = user.getUsername();
 		Employee emp = service.fetchEmployeeByUserName(username);

@@ -7,6 +7,7 @@
 	<mvc:annotation-driven />
 	<context:component-scan base-package="service" />
 	<context:component-scan base-package="controller" />
+	<context:component-scan base-package="rest" />
 	<jee:jndi-lookup id="ds" jndi-name="jdbc/RentDatabase" />
 	<bean id="rentACarApp" class="dao.DaoHibernate">
 
