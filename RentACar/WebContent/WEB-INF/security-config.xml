@@ -6,6 +6,12 @@
     http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
 	<global-method-security secured-annotations="enabled" />
+	<http pattern="/rest/**" create-session="stateless"
+		use-expressions="true">
+		<intercept-url pattern="/rest/openedReservationList"
+			access="hasAnyRole('Administrator','Zaposlenik','Rezervacije')" />
+		<http-basic />
+	</http>
 	<http auto-config="true" use-expressions="true">
 		<access-denied-handler error-page="/login.jsp?error=forbidden" />
 
@@ -14,8 +20,7 @@
 			access="hasAnyRole('Administrator','Zaposlenik','Rezervacije')" />
 		<intercept-url pattern="/openedReservationList.html"
 			access="hasAnyRole('Administrator','Zaposlenik','Rezervacije')" />
-			<intercept-url pattern="/rest/openedReservationList"
-			access="hasAnyRole('Administrator','Zaposlenik','Rezervacije')" />
+
 		<intercept-url pattern="/closedReservationList.html"
 			access="hasAnyRole('Administrator','Zaposlenik','Rezervacije')" />
 		<intercept-url pattern="/editReservation.html"
