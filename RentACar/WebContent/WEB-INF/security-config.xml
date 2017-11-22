@@ -14,6 +14,8 @@
 			access="hasAnyRole('Administrator','Zaposlenik','Rezervacije')" />
 		<intercept-url pattern="/openedReservationList.html"
 			access="hasAnyRole('Administrator','Zaposlenik','Rezervacije')" />
+			<intercept-url pattern="/rest/openedReservationList"
+			access="hasAnyRole('Administrator','Zaposlenik','Rezervacije')" />
 		<intercept-url pattern="/closedReservationList.html"
 			access="hasAnyRole('Administrator','Zaposlenik','Rezervacije')" />
 		<intercept-url pattern="/editReservation.html"
