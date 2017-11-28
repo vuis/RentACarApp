@@ -7,7 +7,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,12 +19,11 @@ import domain.Reservation;
 import service.ServiceInterface;
 
 @RestController
-@RequestMapping("/rest/openedReservationList")
 public class ReservationListRest {
 	@Autowired
 	private ServiceInterface service;
 
-	@GetMapping(produces = "application/json; charset=utf-8")
+	@RequestMapping(value="/rest/openedReservationList", produces = "application/json;charset=UTF-8")
 	public String showOpenedReservation() throws JsonProcessingException {
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username = user.getUsername();
